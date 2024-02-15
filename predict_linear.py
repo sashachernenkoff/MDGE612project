@@ -29,10 +29,10 @@ class GenoPhenoDataset(Dataset):
 
 
 # Read in data and trim to ssnps
-geno = pd.read_csv('coded_call_method_54.tair9.FT10.csv')
+geno = pd.read_csv('data/coded_call_method_54.tair9.FT10.csv')
 geno.columns = [int(col) if col.isdigit() else col for col in geno.columns] # convert ids to ints
 pheno = pd.read_csv('FT10.txt', sep='\t')
-ssnps = pd.read_csv('ssnps.csv',index_col=0)
+ssnps = pd.read_csv('data/ssnps.csv', index_col=0)
 
 # Impute missing phenotypes
 mean = pheno['5_FT10'].mean()
