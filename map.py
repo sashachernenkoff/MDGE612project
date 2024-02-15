@@ -8,6 +8,7 @@ import statsmodels.api as sm
 # A function for creating a manhattan plot from a data frame containing snps
 # pre-sorted by 'Chromosome', 'Position', with pre-calculated '-log(10)p'
 def plot_manhattan(snps, sig):
+    snps = snps.copy()
     chrom_colors = ['darksalmon', 'cadetblue', 'goldenrod', 'rebeccapurple', 'olive']
     color_map = {chrom: chrom_colors[(chrom - 1) % len(chrom_colors)] for chrom in snps['Chromosome'].unique()}
     snps['color'] = snps['Chromosome'].map(color_map)
@@ -98,10 +99,10 @@ results.to_csv('data/map_results.csv') # (214219 x 4)
 plot_manhattan(results, sig)
 
 # Correct for LD
-ssnps = results[results['p'] < sig].drop('color',axis=1)
+ssnps = results[results['p'] < sig] # 4180 significant snps before trim
 snps_trim = ld_trim_2kb(results)
 ssnps_trim = snps_trim[snps_trim['p'] < sig]
-ssnps_trim.to_csv('data/ssnps.csv')
+ssnps_trim.to_csv('data/ssnps.csv') # 2764 significant snps after trim
 # ssnps = pd.read_csv('data/ssnps.csv', index_col=0)
 
 # Calculate the genomic inflation factor
@@ -111,7 +112,7 @@ ssnps_trim.to_csv('data/ssnps.csv')
 observed_chi2 = -2 * np.log(results['p'])
 expected_median_chi2 = stats.chi2.ppf(0.5, df=1)
 gif = np.median(observed_chi2) / expected_median_chi2
-print(f'genomic inflation factor: {gif}')
+print(f'genomic inflation factor: {gif}') # gif = 9.111
 
 # Plot p-value distribution (QQ plot)
 stats.probplot(observed_chi2, dist="chi2", sparams=(1,), plot=plt)
@@ -119,3 +120,5 @@ plt.title('QQ Plot')
 plt.xlabel('Theoretical Quantiles')
 plt.ylabel('Observed Chi-Square Test Statistics')
 plt.show()
+
+# Need to handle population stratification
