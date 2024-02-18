@@ -1,14 +1,15 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import tensorflow as tf
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 from sklearn.metrics import mean_squared_error, r2_score
 
 
 # Number of snps to use
-N = 20
+N = 100
 
 
 def plot(y_test, y_pred):
@@ -41,6 +42,7 @@ geno.index = geno.index.astype('int64')
 X_train, X_test, y_train, y_test = train_test_split(geno, pheno, test_size=0.2, random_state=42)
 
 # Linear regression model
+
 model = LinearRegression()
 model.fit(X_train, y_train)
 
@@ -54,28 +56,44 @@ print(f"R^2 using linear regression: {r2}")
 plot(y_test,y_pred)
 
 # Lasso (L1) regularization
-model = Lasso(alpha=1)
+
+# Find optimal alpha
+alphas = np.logspace(-4, 2, num=50)
+
+lasso = Lasso()
+grid = GridSearchCV(estimator=lasso, param_grid=dict(alpha=alphas), cv=5, scoring='neg_mean_squared_error')
+grid.fit(X_train, y_train)
+print(f"Best alpha for lasso: {grid.best_estimator_.alpha}")
+
+model = Lasso(alpha=grid.best_estimator_.alpha)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 
 mse = mean_squared_error(y_test, y_pred)
-print(f"MSE using lasso regularization: {mse}")
+print(f"MSE using lasso: {mse}")
 r2 = r2_score(y_test, y_pred)
-print(f"R^2 using lasso regularization: {r2}")
+print(f"R^2 using lasso: {r2}")
 
 plot(y_test,y_pred)
 
 # Ridge (L2) regularization
-model = Ridge(alpha=1)
+
+# Find optimal alpha
+ridge = Ridge()
+grid = GridSearchCV(estimator=ridge, param_grid=dict(alpha=alphas), cv=5, scoring='neg_mean_squared_error')
+grid.fit(X_train, y_train)
+print(f"Best alpha for ridge: {grid.best_estimator_.alpha}")
+
+model = Ridge(alpha=grid.best_estimator_.alpha)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 
 mse = mean_squared_error(y_test, y_pred)
-print(f"MSE using ridge regularization: {mse}")
+print(f"MSE using ridge: {mse}")
 r2 = r2_score(y_test, y_pred)
-print(f"R^2 using ridge regularization: {r2}")
+print(f"R^2 using ridge: {r2}")
 
 plot(y_test,y_pred)
 
