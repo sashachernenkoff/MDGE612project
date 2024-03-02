@@ -15,7 +15,12 @@ def find_types(chromosome, position):
     chr = f'Chr{int(chromosome)}'
     chr_feat = gff[gff['Chromosome'] == chr]
     feat = chr_feat[(chr_feat['Start'] <= position) & (chr_feat['End'] >= position)]
-    return ";".join(feat['Type']) if not feat.empty else float('NaN')
+
+    # Use a set to collect unique feature types
+    unique_feat_types = set(feat['Type'])
+
+    # Return a semicolon-joined string of unique feature types or NaN if empty
+    return ";".join(unique_feat_types) if unique_feat_types else float('NaN')
 
 
 # Annotate all snps
