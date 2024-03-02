@@ -35,7 +35,7 @@ def plot_manhattan(snps, sig):
     plt.xlim(left=0,right=len(snps))
 
     # Show the plot
-    plt.savefig('img/jawamix5_manhattan_plot.pdf')
+    plt.savefig('img/jawamix5_manhattan_plot.png')
     plt.show()
 
 

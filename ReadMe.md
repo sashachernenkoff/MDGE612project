@@ -14,7 +14,7 @@ structure and perform association mapping to identify candidate SNPs from a list
 
 ## Methods
 
-![](/Users/sasha/Library/CloudStorage/Dropbox/Sasha/classes/MDGE 612/MDGE612_proj/img/MDGE612 pipeline.png)
+![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/MDGE612%20pipeline.png?raw=true)
 
 ### Quality control
 Python 3.11 was used with packages pandas and numpy for preprocessing the input genotype 

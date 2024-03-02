@@ -55,5 +55,5 @@ ax[1].set_xlabel('Frequency')
 # ax[1].set_ylabel('Type of annotation')  # Already set by the first plot
 
 plt.tight_layout()
-plt.savefig('img/annos.pdf')
+plt.savefig('img/annos.png')
 plt.show()
