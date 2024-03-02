@@ -50,7 +50,9 @@ p-value. The top 20-100 SNPs were used to compare the performance of the three r
 
 
 ### Analysis of top SNPs with GFF model
-Insert discussion here
+To provide biological context to the SNPs and identify potential functional implications, all 
+significant SNPs identified by Jawamix5, as well as the top 100 SNPs used in the regression models, 
+were annotated using the genomic features defined in the GFF file. 
 
 ![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/annos.png?raw=true)
 
