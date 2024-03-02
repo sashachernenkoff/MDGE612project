@@ -52,7 +52,7 @@ p-value. The top 20-100 SNPs were used to compare the performance of the three r
 ### Analysis of top SNPs with GFF model
 Insert discussion here
 
-![](/Users/sasha/Library/CloudStorage/Dropbox/Sasha/classes/MDGE 612/MDGE612_proj/img/annos.pdf)
+![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/annos.png?raw=true)
 
 
 ## Supplementary information
