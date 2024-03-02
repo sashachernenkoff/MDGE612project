@@ -30,6 +30,7 @@ def read_data(geno_file, pheno_file, snp_file):
 
     # Sort snps by p-value
     snps = snps.sort_values(by='pvalue')
+    # snps.head(100).to_csv('data/ssnps_jawamix5.csv')
 
     return geno, pheno, snps
 

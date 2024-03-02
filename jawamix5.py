@@ -13,7 +13,7 @@ def plot_manhattan(snps, sig):
     snps['color'] = snps['chr'].map(color_map)
 
     # Create the Manhattan plot
-    plt.figure(figsize=(8, 3))
+    plt.figure(figsize=(8, 4))
     plt.scatter(snps.index, snps['-log10(p)'], c=snps['color'], alpha=0.6, s=10)
 
     # Add a horizontal line for the significance threshold
@@ -35,7 +35,7 @@ def plot_manhattan(snps, sig):
     plt.xlim(left=0,right=len(snps))
 
     # Show the plot
-    plt.savefig('data/jawamix5_manhattan_plot.pdf')
+    plt.savefig('img/jawamix5_manhattan_plot.pdf')
     plt.show()
 
 
