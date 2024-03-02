@@ -18,14 +18,15 @@ structure and perform association mapping to identify candidate SNPs from a list
 
 ### Quality control
 Python 3.11 was used with packages pandas and numpy for preprocessing the input genotype 
-and phenotype files for modelling in Jawamix5. Preprocessing included recoding the genotypes, 
-removing individuals with no phenotype data, and imputing any missing genotypes.
+and phenotype files for modelling in Jawamix5. Preprocessing included imputing any missing 
+genotypes, recoding the genotypes, and removing individuals with no phenotype data.
 
 
 ### Genome-wide association mapping
-Jawamix5 was used to obtain the significant SNPs and their p-values. This included converting 
-the genotype file to hdf5, creating a kinship matrix, and performing the association mapping
-(with EMMAX).
+Jawamix5 was used to determine p-values of all SNPs. This tool incorporates EMMAX, a method that 
+utilizes a mixed linear model to adjust for population structure, as described by Kang et al. 
+(2010). Notably, this model includes a process to estimate the kinship matrix's influence on the 
+phenotypes.
 
 
 ### Regression models
@@ -35,24 +36,24 @@ tuning.
 
 
 ### Annotation
-Describe annotation process
+To provide biological context to the SNPs and identify potential functional implications, all 
+significant SNPs identified by Jawamix5, as well as the top 100 SNPs used in the regression models, 
+were annotated using the genomic features defined in the GFF file.
 
 
 ## Results
-Jawamix5 was used to determine p-values of all SNPs. This tool incorporates EMMAX, a method that 
-utilizes a mixed linear model to adjust for population structure, as described by Kang et al. 
-(2010). Notably, this model includes a process to estimate the kinship matrix's influence on the 
-phenotypes, a feature not present in other methods. We identified 1,254 candidate SNPs from genome-
-wide association mapping. The SNPs were then organized in ascending order based on their minimum 
-p-value. The top 20-100 SNPs were used to compare the performance of the three regression models.
+We identified 1,254 candidate SNPs from genome-wide association mapping. The SNPs were then sorted 
+in ascending order based on their p-value. The top 20, 40, 60, 80, and 100 SNPs were used to compare 
+the performance of the three regression models (linear regression, L1 regularization, and L2 
+regularization). The L1 regularized model provided the lowest MSE and highest R^2 value.
 
 ![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/model_eval.png?raw=true)
 
 
 ### Analysis of top SNPs with GFF model
-To provide biological context to the SNPs and identify potential functional implications, all 
-significant SNPs identified by Jawamix5, as well as the top 100 SNPs used in the regression models, 
-were annotated using the genomic features defined in the GFF file. 
+The majority of significant SNPs identified by Jawamix5 were coding region variants, particularly 
+protein coding variants. Other minor frequency features included snRNA, ncRNA, 5' UTR, and 3' UTR. 
+A similar distribution of features was observed in the top 100 most significant SNPs.
 
 ![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/annos.png?raw=true)
 
