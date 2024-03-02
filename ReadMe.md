@@ -14,6 +14,8 @@ structure and perform association mapping to identify candidate SNPs from a list
 
 ## Methods
 
+![](/Users/sasha/Library/CloudStorage/Dropbox/Sasha/classes/MDGE 612/MDGE612_proj/img/MDGE612 pipeline.png)
+
 ### Quality control
 Python 3.11 was used with packages pandas and numpy for preprocessing the input genotype 
 and phenotype files for modelling in Jawamix5. Preprocessing included recoding the genotypes, 
@@ -50,7 +52,7 @@ p-value. The top 20-100 SNPs were used to compare the performance of the three r
 ### Analysis of top SNPs with GFF model
 Insert discussion here
 
-Insert figure here
+![](/Users/sasha/Library/CloudStorage/Dropbox/Sasha/classes/MDGE 612/MDGE612_proj/img/annos.pdf)
 
 
 ## Supplementary information
