@@ -15,7 +15,7 @@ def recode(genotypes):
 
 
 # Read in the genotypes and phenotypes, recode genotypes
-geno_raw = pd.read_csv('call_method_54.tair9.FT10.csv')
+geno_raw = pd.read_csv('data/call_method_54.tair9.FT10.csv')
 
 # Check for and remove NAs
 # missing = ~geno_raw.iloc[:,2:].isin(['A', 'C', 'T', 'G'])
@@ -23,9 +23,9 @@ geno_raw = pd.read_csv('call_method_54.tair9.FT10.csv')
 # No missing genotypes
 
 geno = recode(geno_raw)
-geno.to_csv('data/coded_call_method_54.tair9.FT10.csv',index=False)
+geno.to_csv('out/coded_call_method_54.tair9.FT10.csv',index=False)
 # geno = pd.read_csv('data/coded_call_method_54.tair9.FT10.csv')
-pheno = pd.read_csv('FT10.txt', sep='\t')
+pheno = pd.read_csv('data/FT10.txt', sep='\t')
 
 # Identify individuals with both genotype and phenotype data
 com = pd.concat([geno.iloc[:,2:], pd.DataFrame(np.nan, index=[len(geno)], columns=geno.columns)])
@@ -45,5 +45,5 @@ pheno_fil = pd.DataFrame({
     'ecotype_id':com.columns,
     '5_FT10': com.iloc[-1]}).reset_index(drop=True)
 
-geno_fil.to_csv('data/filtered.coded_call_method_54.tair9.FT10.csv',index=False)
-pheno_fil.to_csv('data/filtered.FT10.txt',index=False)
+geno_fil.to_csv('out/filtered.coded_call_method_54.tair9.FT10.csv',index=False)
+pheno_fil.to_csv('out/filtered.FT10.txt',index=False)

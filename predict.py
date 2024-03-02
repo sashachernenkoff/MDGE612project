@@ -16,9 +16,9 @@ warnings.simplefilter('ignore', ConvergenceWarning)
 N = [20,40,60,80,100]
 
 # Data files
-snp_file = 'data/emmax_out/EMMAX.0_5_FT10.top'
-geno_file = 'data/filtered.coded_call_method_54.tair9.FT10.csv'
-pheno_file = 'data/filtered.FT10.txt'
+snp_file = 'out/emmax_out/EMMAX.0_5_FT10.top'
+geno_file = 'out/filtered.coded_call_method_54.tair9.FT10.csv'
+pheno_file = 'out/filtered.FT10.txt'
 
 
 def read_data(geno_file, pheno_file, snp_file):

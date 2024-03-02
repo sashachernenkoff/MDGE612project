@@ -4,11 +4,11 @@ import pandas as pd
 plt.rcParams['font.family'] = 'serif'
 
 colnames = ['Chromosome', 'Positions', 'pvalue', 'AdjustedR2', 'coefficient', 'Sd_Err', 'MAF_count']
-all_snps = pd.read_csv('data/emmax_out/EMMAX.0_5_FT10.top', skiprows=2, names=colnames)
-top_snps = pd.read_csv('data/ssnps_jawamix5.csv')
+all_snps = pd.read_csv('out/emmax_out/EMMAX.0_5_FT10.top', skiprows=2, names=colnames)
+top_snps = pd.read_csv('out/ssnps_jawamix5.csv')
 
 gff_columns = ['Chromosome', 'Source', 'Type', 'Start', 'End', 'Score', 'Strand', 'Phase', 'Attributes']
-gff = pd.read_csv('gene_model.gff', sep='\t', names=gff_columns, comment='#')
+gff = pd.read_csv('data/gene_model.gff', sep='\t', names=gff_columns, comment='#')
 
 
 def find_types(chromosome, position):
@@ -25,11 +25,11 @@ def find_types(chromosome, position):
 
 # Annotate all snps
 all_snps['FeatureTypes'] = all_snps.apply(lambda row: find_types(row['Chromosome'], row['Positions']), axis=1)
-all_snps.to_csv('data/all_annotated_ssnps.csv')
+all_snps.to_csv('out/all_annotated_ssnps.csv')
 
 # Annotate the top snps
 top_snps['FeatureTypes'] = top_snps.apply(lambda row: find_types(row['Chromosome'], row['Positions']), axis=1)
-top_snps.to_csv('data/top_annotated_ssnps.csv')
+top_snps.to_csv('out/top_annotated_ssnps.csv')
 
 
 def count_annotations(df):

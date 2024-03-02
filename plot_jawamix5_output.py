@@ -41,7 +41,7 @@ def plot_manhattan(snps, sig):
 
 # Read in data
 colnames = ['chr', 'location', 'pvalue', 'AdjustedR2', 'coefficient', 'Sd_Err', 'MAF_count']
-snps = pd.read_csv('data/emmax_out/EMMAX.0_5_FT10.top', skiprows=2, names=colnames)
+snps = pd.read_csv('out/emmax_out/EMMAX.0_5_FT10.top', skiprows=2, names=colnames)
 
 # Calculate -log10(p)
 snps['-log10(p)'] = [-np.log10(x) for x in snps['pvalue']]
