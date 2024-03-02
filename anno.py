@@ -39,8 +39,15 @@ def count_annotations(df):
 all_snps_counts = count_annotations(all_snps)
 top_snps_counts = count_annotations(top_snps)
 
+# Combine annotations from both counts
+combined_index = all_snps_counts.index.union(top_snps_counts.index).drop_duplicates()
+
+# Reindex both counts with the combined index, filling missing values with 0
+all_snps_counts = all_snps_counts.reindex(combined_index, fill_value=0)
+top_snps_counts = top_snps_counts.reindex(combined_index, fill_value=0)
+
 # Plot annotation counts
-fig, ax = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
+fig, ax = plt.subplots(1, 2, figsize=(10, 6), sharey=True)
 
 # All SNPs
 all_snps_counts.plot(kind='barh', ax=ax[0], color='darksalmon')
