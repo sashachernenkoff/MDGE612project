@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 
 
+plt.rcParams['font.family'] = 'serif'
+
 # A function for creating a manhattan plot from the output of Jawamix5
 def plot_manhattan(snps, sig):
     snps = snps.copy()
@@ -11,7 +13,7 @@ def plot_manhattan(snps, sig):
     snps['color'] = snps['chr'].map(color_map)
 
     # Create the Manhattan plot
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(8, 3))
     plt.scatter(snps.index, snps['-log10(p)'], c=snps['color'], alpha=0.6, s=10)
 
     # Add a horizontal line for the significance threshold
@@ -30,6 +32,7 @@ def plot_manhattan(snps, sig):
     plt.ylabel('-log10(p-value)')
     plt.xticks(midpoints,[1,2,3,4,5])
     plt.ylim(bottom=2.25)
+    plt.xlim(left=0,right=len(snps))
 
     # Show the plot
     plt.savefig('data/jawamix5_manhattan_plot.pdf')
