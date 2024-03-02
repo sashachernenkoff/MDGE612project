@@ -58,10 +58,12 @@ The additional code has been attached as python and unix command files.
 
 
 ## References
-Kang, H. M., Sul, J. H., Service, S. K., Zaitlen, N. A., Kong, S., Freimer, N. B., Sabatti, C., 
-& Eskin, E. (2010). Variance component model to account for sample structure in genome-wide 
-association studies. Nature Genetics, 42(4), Article 4. https://doi.org/10.1038/ng.548
+Atwell, S. *et al*. Genome-wide association study of 107 phenotypes in *rabidopsis thaliana* 
+inbred lines. *Nature 2010 465:7298* 465, 627–631 (2010). https://doi.org/10.1038/nature08800
 
-Long, Q., Zhang, Q., Vilhjalmsson, B. J., Forai, P., Seren, Ü., & Nordborg, M. (2013).
-JAWAMix5: An out-of-core HDF5-based java implementation of whole-genome association studies 
-using mixed models. Bioinformatics, 29(9), 1220–1222. https://doi.org/10.1093/bioinformatics/btt122
+Kang, H. M. *et al*. Variance component model to account for sample structure in genome-wide 
+association studies. *Nat Genet* 42, 348–354 (2010). https://doi.org/10.1038/ng.548
+
+Long, Q. *et al*. JAWAMix5: an out-of-core HDF5-based java implementation of whole-genome 
+association studies using mixed models. *Bioinformatics* 29, 1220–1222 (2013). 
+https://doi.org/10.1093/bioinformatics/btt122
