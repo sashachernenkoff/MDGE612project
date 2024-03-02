@@ -52,8 +52,8 @@ regularization). The L1 regularized model provided the lowest MSE and highest R^
 
 ### Analysis of top SNPs with GFF model
 The majority of significant SNPs identified by Jawamix5 were coding region variants, particularly 
-protein coding variants. Other minor frequency features included snRNA, ncRNA, 5' UTR, and 3' UTR. 
-A similar distribution of features was observed in the top 100 most significant SNPs.
+protein coding variants. Other minor frequency features included transposable gene elements, 5' UTRs, 
+and 3' UTRs. A similar distribution of features was observed in the top 100 most significant SNPs.
 
 ![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/annos.png?raw=true)
 
