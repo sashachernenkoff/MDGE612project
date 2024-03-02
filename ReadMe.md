@@ -44,7 +44,7 @@ phenotypes, a feature not present in other methods. We identified 1,254 candidat
 wide association mapping. The SNPs were then organized in ascending order based on their minimum 
 p-value. The top 20-100 SNPs were used to compare the performance of the three regression models.
 
-Insert figure here
+![](https://github.com/sashachernenkoff/MDGE612project/blob/main/img/model_eval.png?raw=true)
 
 
 ### Analysis of top SNPs with GFF model
